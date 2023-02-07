@@ -1,12 +1,15 @@
 {
+  "name": "school-manage-cms",
+  "version": "0.0.0",
   "private": true,
-  "author": "YOKO <yoko.wang@makeblock.com>",
+  "author": "YOKO",
   "scripts": {
     "build": "max build",
     "dev": "max dev",
     "format": "prettier --cache --write .",
     "postinstall": "max setup",
     "prepare": "husky install",
+    "release": "standard-version -t release-v",
     "setup": "max setup",
     "start": "npm run dev"
   },
@@ -14,7 +17,8 @@
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-components": "^2.0.1",
     "@umijs/max": "^4.0.50",
-    "antd": "^5.0.0"
+    "antd": "^5.0.0",
+    "standard-version": "^9.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
