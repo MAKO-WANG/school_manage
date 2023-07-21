@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "johnsoncodehk.volar",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-close-tag",
+    "oouo-diogo-perdigao.docthis",
+    "whtouche.vscode-js-console-utils",
+    "secanis.jenkinsfile-support",
+    "stylelint.vscode-stylelint",
+    "cssho.vscode-svgviewer",
+    "wayou.vscode-todo-highlight"
+  ]
+}

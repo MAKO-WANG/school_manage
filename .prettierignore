@@ -1,0 +1,13 @@
+# Mac OS
+.DS_Store
+
+/node_modules
+/build
+/dist
+/mock
+
+.vscode/
+
+package-lock.json
+yarn-error.log
+yarn.lock
