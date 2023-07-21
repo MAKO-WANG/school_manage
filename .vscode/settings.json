@@ -1,0 +1,75 @@
+{
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.eol": "\n",
+  "editor.snippetSuggestions": "top",
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": true,
+  "workbench.statusBar.visible": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.triggerExpansionOnTab": true,
+  "eslint.debug": true,
+  "eslint.options": {
+    "extensions": [
+      ".js",
+      ".ts",
+      ".vue"
+    ]
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue",
+    "javascript",
+    "javascriptreact"
+  ],
+  "prettier.requireConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": false
+    }
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "html.format.enable": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.indentHandlebars": true,
+  "volar.autoCompleteRefs": true,
+  "volar.completion.preferredAttrNameCase": "auto-camel",
+  "javascript.validate.enable": false,
+  "cSpell.words": [
+    "automock",
+    "Avenir",
+    "commitlint",
+    "datetime",
+    "eqeqeq",
+    "hoverable",
+    "intlify",
+    "lcov",
+    "nnqng",
+    "Serializers",
+    "sider",
+    "styl",
+    "stylelint",
+    "tjwmf",
+    "typecheck",
+    "unmocked",
+    "vite",
+    "vitejs",
+    "pinia",
+  ]
+}
