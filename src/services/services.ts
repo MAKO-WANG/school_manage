@@ -254,10 +254,38 @@ export const getStatus = async () => {
   });
 };
 
-// 获取老师
+// 获取学生
 export const getStudents = async (params?: Record<string, any>) => {
   return await request({
     url: `${apiUrl}/students/`,
     params,
+  });
+};
+
+// 获取学生详情
+export const getStudentItem = async (id: number) => {
+  return await request({
+    url: `${apiUrl}/students/${id}/`,
+  });
+};
+
+// 新增学生
+export const addStudentItem = async (data: Record<string, any>) => {
+  return await request({
+    method: 'post',
+    url: `${apiUrl}/students/`,
+    data,
+  });
+};
+
+// 修改学生
+export const updateStudentItem = async (
+  id: number,
+  data: Record<string, any>,
+) => {
+  return await request({
+    method: 'put',
+    url: `${apiUrl}/students/${id}/`,
+    data,
   });
 };

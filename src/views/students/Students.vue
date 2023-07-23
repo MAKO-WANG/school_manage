@@ -3,7 +3,7 @@
     <Card>
       <section class="action-box">
         <section class="left">
-          <button>新增学生</button>
+          <button @click="show(0)">新增学生</button>
         </section>
       </section>
       <section class="table-wrapper">
@@ -16,6 +16,8 @@
               <th>性别</th>
               <th>年级</th>
               <th>班级</th>
+              <th>监护人</th>
+              <th>监护人手机</th>
               <th>出生年月</th>
               <th>操作</th>
             </tr>
@@ -28,6 +30,8 @@
               <td>{{ item.gender === "male" ? '男' : '女' }}</td>
               <td>{{ item.grade_name }}</td>
               <td>{{ item.group_name }}</td>
+              <td>{{ item.guardian }}</td>
+              <td>{{ item.guardian_mobile }}</td>
               <td>{{ timestampToTime(item.date_of_birth, true) }}</td>
               <td>
                 <button @click="show(item.id)">编辑</button>
@@ -38,6 +42,10 @@
         <Pagination v-bind="pages" @change="handleChange" />
       </section>
     </Card>
+
+    <drawer v-model:visible="visible" :title="title">
+      <Form :id="id" @hide="hide" />
+    </drawer>
   </section>
 </template>
 
@@ -45,8 +53,10 @@
 import { getStudents } from '@/services';
 import { timestampToTime } from '@/utils';
 import Card from '@c/Card.vue';
+import Drawer from '@c/Drawer.vue';
 import Pagination from '@c/Pagination.vue';
-import { onMounted, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
+import Form from './Form.vue';
 
 const data = ref([])
 const visible = ref(false)
@@ -56,6 +66,23 @@ const pages = reactive({
   page_size: 15,
   total: 0,
 })
+
+const title = computed(() => {
+  if (!id.value) {
+    return '新增学生'
+  }
+  const item = data.value.find(i => i.id === id.value)
+  const name = item ? item.name : ''
+  return '编辑' + name
+})
+
+const hide = (flag?: boolean) => {
+  visible.value = false
+  if (flag) {
+    getList()
+  }
+}
+
 
 const getList = async () => {
   try {
