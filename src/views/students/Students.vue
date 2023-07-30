@@ -6,7 +6,24 @@
           <button @click="show(0)" style="margin-right: 15px;">新增学生</button>
           <button @click="bulkVisible = true">批量新增学生</button>
         </section>
-
+        <section class="right">
+          <div class="search-item">
+            <label class="search-label">学生姓名:</label>
+            <input type="text" v-model="query.name" placeholder="请输入学生姓名">
+          </div>
+          <div class="search-item">
+            <label class="search-label">年级:</label>
+            <select style="width: 104px;" v-model="query.grade_id">
+              <option value="">请选择</option>
+              <option :value="item.id" :key="item.id" v-for="item in gradeList">{{ item.name }}</option>
+            </select>
+          </div>
+          <div class="search-item">
+            <label class="search-label">手机号码:</label>
+            <input type="text" v-model="query.guardian_mobile" placeholder="请输入监护人手机号码">
+          </div>
+          <button @click="getList">确定</button>
+        </section>
       </section>
       <section class="table-wrapper">
         <table class="table">
@@ -61,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { getStudents } from '@/services';
+import { getGrades, getStudents } from '@/services';
 import { timestampToTime } from '@/utils';
 import Card from '@c/Card.vue';
 import Drawer from '@c/Drawer.vue';
@@ -81,6 +98,14 @@ const pages = reactive({
   total: 0,
 })
 
+const query = reactive({
+  name: '',
+  guardian_mobile: '',
+  grade_id: ''
+})
+
+const gradeList = ref([])
+
 const title = computed(() => {
   if (!id.value) {
     return '新增学生'
@@ -98,10 +123,21 @@ const hide = (flag?: boolean) => {
   }
 }
 
+const getGradeList = async () => {
+  try {
+    const res = await getGrades({
+      current: 0
+    })
+    gradeList.value = res.list
+  } catch (error) {
+    console.log(['error'])
+  }
+}
+
 
 const getList = async () => {
   try {
-    const res = await getStudents({ ...pages })
+    const res = await getStudents({ ...query, ...pages })
     data.value = res.list
     const { current, page_size, total } = res.pages
     pages.current = current;
@@ -124,6 +160,7 @@ const show = (i: number) => {
 
 onMounted(() => {
   getList()
+  getGradeList()
 })
 </script>
 
