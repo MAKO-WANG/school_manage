@@ -9,7 +9,7 @@
       <section class="header-top-right">
         你好，
         <template v-if="isLogin">
-          <span>{{ username }}</span>
+          <router-link to="/user-center">{{ username }}</router-link>
           <span>
             /
             <span class="logout" @click="handleClick">退出</span>

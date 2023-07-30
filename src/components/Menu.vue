@@ -7,6 +7,7 @@
     <router-link to="/teachers">老师管理</router-link>
     <router-link to="/students">学生管理</router-link>
     <router-link to="/user">用户管理</router-link>
+    <router-link to="/user-center">个人中心</router-link>
   </section>
 </template>
 

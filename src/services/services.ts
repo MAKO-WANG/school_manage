@@ -20,6 +20,13 @@ export const getUserItem = async (id: number) => {
   });
 };
 
+// 获取用户详情
+export const getUsers = async () => {
+  return await request({
+    url: `${apiUrl}/users/`,
+  });
+};
+
 // 获取年级
 export const getGrades = async (params?: Record<string, any>) => {
   return await request({
