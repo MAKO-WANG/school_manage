@@ -21,9 +21,10 @@ export const getUserItem = async (id: number) => {
 };
 
 // 获取用户详情
-export const getUsers = async () => {
+export const getUsers = async (params?: Record<string, any>) => {
   return await request({
     url: `${apiUrl}/users/`,
+    params,
   });
 };
 
