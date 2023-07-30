@@ -289,3 +289,12 @@ export const updateStudentItem = async (
     data,
   });
 };
+
+// 批量新增学生
+export const bulkAddStudentItem = async (data: Record<string, any>[]) => {
+  return await request({
+    method: 'post',
+    url: `${apiUrl}/students/bulk_create/`,
+    data,
+  });
+};

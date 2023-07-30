@@ -3,13 +3,16 @@
     <Card>
       <section class="action-box">
         <section class="left">
-          <button @click="show(0)">新增学生</button>
+          <button @click="show(0)" style="margin-right: 15px;">新增学生</button>
+          <button @click="bulkVisible = true">批量新增学生</button>
         </section>
+
       </section>
       <section class="table-wrapper">
         <table class="table">
           <thead>
             <tr>
+              <th>选择</th>
               <th>序号</th>
               <th>学生编号</th>
               <th>学生姓名</th>
@@ -24,6 +27,9 @@
           </thead>
           <tbody>
             <tr v-for="(item, index) in data" :key="item.id">
+              <td>
+                <input type="checkbox" :value="item.id" v-model="ids" />
+              </td>
               <td>{{ index + 1 }}</td>
               <td>{{ item.label }}</td>
               <td>{{ item.name }}</td>
@@ -46,6 +52,11 @@
     <drawer v-model:visible="visible" :title="title">
       <Form :id="id" @hide="hide" />
     </drawer>
+
+    <!-- 批量修改年级 -->
+    <drawer v-model:visible="bulkVisible" title="批量新增学生" width="45%">
+      <BulkAddForm @hide="hide" />
+    </drawer>
   </section>
 </template>
 
@@ -56,11 +67,14 @@ import Card from '@c/Card.vue';
 import Drawer from '@c/Drawer.vue';
 import Pagination from '@c/Pagination.vue';
 import { computed, onMounted, reactive, ref } from 'vue';
+import BulkAddForm from './BulkAddForm.vue';
 import Form from './Form.vue';
 
 const data = ref([])
 const visible = ref(false)
 const id = ref(0)
+const ids = ref([])
+const bulkVisible = ref(false)
 const pages = reactive({
   current: 1,
   page_size: 15,
@@ -78,6 +92,7 @@ const title = computed(() => {
 
 const hide = (flag?: boolean) => {
   visible.value = false
+  bulkVisible.value = false
   if (flag) {
     getList()
   }

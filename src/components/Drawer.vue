@@ -1,6 +1,6 @@
 <template>
   <section class="drawer" v-if="visible">
-    <section class="drawer-wrapper">
+    <section class="drawer-wrapper" :style="{ width: width ? width : '380px' }">
       <section class="header">
         <div class="close" @click="close">
           <CloseOutlined />
@@ -29,6 +29,7 @@ import {
 defineProps<{
   visible: boolean;
   title?: string;
+  width?: string;
 }>()
 
 
@@ -62,7 +63,7 @@ const close = () => {
   }
 
   &-wrapper {
-    width: 380px;
+
     height: 100%;
     position: absolute;
     right: 0;
